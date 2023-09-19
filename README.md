@@ -1,6 +1,6 @@
 # A Survey On FaceGuard: Overcoming Criminal Recognition Challenges in Law Enforcement Scenarios
 
-For the completion of final year project
+Survey Paper on FaceGuard: Overcoming Criminal Recognition Challenges in Law Enforcement Scenarios for the completion of final year project.
 
 ## Recommended tooling
 
