@@ -1,0 +1,82 @@
+\section{Datasets} \label{section:datasets}
+
+Datasets play a crucial role in the development, training, and evaluation of face detection and recognition systems. They provide researchers with rich resources such as transfer learning where large face datasets can be used to pre-train models, which can then be fine-tuned on smaller, task-specific datasets is often results in better performance than training on the smaller dataset alone.
+
+Requirements of a good dataset are as follows:
+
+\begin{enumerate}
+    \item \textbf{Diversity}: The dataset should encompass a wide variety of facial features, expressions, angles, and occlusions. This ensures that the trained models generalize well to real-world scenarios.
+
+    \item \textbf{High Quality Images}: Images should be of high resolution and clarity. Blurry or low-quality images can hinder the performance of detection or recognition systems.
+
+    \item \textbf{Varied Lighting Conditions}: It should include faces under different lighting conditions - from well-lit to poorly lit scenarios - to challenge and enhance the robustness of algorithms.
+
+    \item \textbf{Age Variability}: Faces from different age groups, ranging from infants to the elderly, should be represented to ensure age-invariance in recognition.
+
+    \item \textbf{Demographic Diversity}: A balanced representation of various ethnicities, genders, and backgrounds is essential to prevent biases in the resulting models.
+
+    \item \textbf{Annotations}: Precise annotations, including bounding boxes for detection and identity labels for recognition, are crucial.
+
+    \item \textbf{Temporal Data}: For video-based recognition systems, the dataset should include video sequences to account for temporal variations and movements.
+
+    \item \textbf{Real-world Scenarios}: Inclusion of "in-the-wild" images or videos where faces are naturally occluded, or in varied expressions and postures, simulates real-world challenges.
+
+    \item \textbf{Scalability}: A good dataset should be large enough to train deep learning models, which often require vast amounts of data.
+
+    \item \textbf{Consent and Ethics}: All data should be collected with proper consent, ensuring the privacy and rights of the individuals are respected.
+\end{enumerate}
+
+
+
+WebFace260M benchmark \cite{zhu_webface260m_2023}, an ultra-large-scale dataset comprising 4 million identities and 260 million faces was introduced to bridge the data gap between academia and industry. The dataset was still refined by employing the Cleaning Automatically by Self-Training (CAST) pipeline,into WebFace42M, with 2 million identities and 42 million faces. The benchmark and cleaned dataset facilitate efficient model training, resulting in improved face recognition performance and potential solutions for bias mitigation and privacy concerns in the field. The benchmark and cleaned dataset facilitate efficient model training, resulting in improved face recognition performance and potential solutions for bias mitigation and privacy concerns in the field.
+
+Zhongyuan Wang et al. \cite{wang_masked_2023} proposes three types of masked face datasets: Masked Face Detection Dataset (MFDD), Real-world Masked Face Recognition Dataset (RMFRD), and Simulated Masked Face Recognition Dataset (SMFRD). The Real-world Masked Face Recognition Dataset (RMFRD) is claimed to be the world's largest real-world masked face dataset by the authors. Although the details of the specific methods used in developing the datasets are not mentioned in the provided sources. DVG-Face framework \cite{fu_dvg-face_2022} was evaluated on seven challenging databases belonging to five HFR tasks, including NIR-VIS, Sketch-Photo, Profile-Frontal Photo, Thermal-VIS, and ID-Camera, and achieves superior performances over state-of-the-art methods and outperforms them. Zhao et al. \cite{zhao_towards_2022} curated a new large-scale Cross-Age Face Recognition (CAFR) benchmark dataset to facilitate research in age-invariant face recognition for their AIM model. Extensive experiments are conducted on the CAFR dataset and other cross-age datasets (MORPH, CACD, FG-NET) to demonstrate the superiority of the proposed AIM model over existing techniques. The AIM model is further benchmarked on unconstrained face recognition datasets (YTF, IJB-C) to verify its generalization ability in recognizing faces in the wild.
+
+Authors in \cite{abuzneid_enhanced_2018} used 3 datasets YALE and AT\&T for testing the proposed framework and evaluated their method on the LFW dataset, which is a state-of-the-art benchmark dataset for face recognition.
+
+Detection in a controlled environment often leads to good results but when the model is deployed in an uncontrolled environment with noise, occlusion, extrnal lighting, makeups etc often referred as ``in the wild" then the accuracy drops. But there are dataset with these kinds of images. One such dataset is the WIDER FACE dataset, which is used as a training dataset for the CNN based lightweight detector in \cite{putro_high_2021}. It contains 32,203 images, with 12,800 images specifically used for training the detector. Augmentation techniques are applied to enrich the training data and prevent overfitting during the training process. The second dataset is the PASCAL face dataset \cite{putro_high_2021}, which consists of 851 images with 1335 labelled faces. This dataset is a subset of the PASCAL VOC dataset and includes variations in pose and background, both indoor and outdoor.
+
+Datasets like VGGFace2 and MS-Celeb-1M, which primarily contain data from young, facially beautiful celebrities with makeup, are biased in terms of age and facial appearance, leading to potential performance issues when using pretrained models from these datasets on different audiences \cite{wanyonyi_open-source_2022}.
+
+Tables \ref{det-ds} and \ref{rec-ds} contains a list of popular publicly available datasets found in the literature survey:
+
+\begin{table}[htbp]
+\caption{Detection Datasets}
+\begin{center}
+\begin{tabularx}{\columnwidth}{|X|c|X|}
+\hline
+\textbf{Dataset} & \textbf{Year}& \textbf{Size} \\
+\hline
+VGGFace2 \cite{kim_face_2022} & 2018 & 3.31 million images of 9,131 subjects \\
+\hline
+WIDER Face \cite{kim_face_2022} & 2016 & 32,203 images with 393,703 annotated face bounding boxes \\
+\hline
+VGGFace2 \cite{kim_face_2022} & 2018 & 3.31 million images of 9,131 subjects \\
+\hline
+PASCAL Face \cite{feng_detect_2022} & 2012 & 1,335 faces from 851 images \\
+\hline
+\end{tabularx}
+\label{det-ds}
+\end{center}
+\end{table}
+    
+    
+\begin{table}[htbp]
+\caption{Recognition Datasets}
+\begin{center}
+\begin{tabularx}{\columnwidth}{|X|c|X|}
+\hline
+\textbf{Dataset} & \textbf{Year}& \textbf{Size} \\
+\hline
+MS-Celeb-1M \cite{wanyonyi_open-source_2022} & 2016 & 10 million images of 100,000 celebrities \\
+\hline
+LFW \cite{kim_face_2022} & 2007 & 13,000 images of 5,749 distinct individuals \\
+\hline
+CASIA NIR-VIS 2.0 \cite{liu_heterogeneous_2022} & 2007 & 17,580 images from 725 subjects \\
+\hline
+ChokePoint \cite{barquero_rank-based_2021} & 2011 & 54 video sequences captured from 6 different camera views \\
+\hline
+\end{tabularx}
+\label{rec-ds}
+\end{center}
+\end{table}
