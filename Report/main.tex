@@ -1,0 +1,129 @@
+% region frontmatter
+\documentclass[oneside,openany,a4paper,12pt]{book}
+
+\usepackage{fancyhdr}
+\fancypagestyle{plain}{\fancyhf{}}
+\setlength{\headheight}{16pt}
+\pagestyle{fancy}
+\fancyhead{}
+\fancyheadoffset{0cm}
+\fancyfootoffset{0cm}
+\renewcommand{\headrulewidth}{0pt}
+\cfoot{}
+\rfoot{}
+
+\usepackage[
+	pdfauthor={Dheeraj Bisht, Himanshu Pawar, Nisha, and Robin},
+	pdftitle={Project Stage-I Report},
+    pdfsubject={Artificial Intelligence},
+    pdfkeywords={AI, computer vision, deep learning, face detection, face recognition},
+	hidelinks
+]{hyperref}
+\usepackage[numbers,sort]{natbib}
+
+\usepackage{tikz}
+\usetikzlibrary{arrows,shapes,decorations,automata,backgrounds,petri}
+\usepackage{fancybox}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{tabularx,booktabs}
+\usepackage{numprint}
+\usepackage{svg}
+
+\usepackage[left=1.55in,right=1in,top=1in,bottom=1in]{geometry}
+\usepackage{titlesec}
+\usepackage{titletoc}
+\usepackage[titletoc]{appendix}
+\usepackage[nottoc,notlot,notlof,numbib]{tocbibind}
+
+\renewcommand{\appendixname}{Annexure}
+\renewcommand{\bibname}{References}
+
+\setcounter{secnumdepth}{5}
+
+\usepackage{float}
+\usepackage{subcaption}
+\usepackage{multirow}
+
+\usepackage[ruled,vlined]{algorithm2e}
+
+% endregion
+
+\newcommand{\metachapter}[1]{
+	\section*{\centerline{#1}}
+	\addcontentsline{toc}{section}{#1}
+}
+
+\newcommand{\nametable}{
+	\begin{table}[h!]
+		\centering
+		\begin{tabular}{ l r }
+			Dheeraj Bisht \hspace{25mm} & (3413) \\
+			Himanshu Pawar \hspace{25mm} & (3423) \\
+			Nisha \hspace{25mm} & (3434) \\
+			Robin \hspace{25mm} & (3444) \\
+		\end{tabular}
+	\end{table}
+}
+
+\newcommand{\lithead}[3][]{
+	\ifthenelse{\equal{#1}{}}{\citeauthor{#2}}{#1}
+	\cite{#2}\ifthenelse{\equal{#3}{}}{.}{ #3}
+}
+
+\begin{document}
+
+	\include{components/front.tex}
+	\include{components/certificate.tex}
+	\include{components/approval.tex}
+
+	\setcounter{page}{0}
+
+	\frontmatter
+
+	\pagestyle{fancy}
+	\renewcommand{\headrulewidth}{1pt}
+	\renewcommand{\footrulewidth}{1pt}
+	\fancyfoot[CO]{Department of Computer Engineering, Army Institute of Technology, Pune}
+	\lhead{FaceGuard: Criminal Recognition in Law Enforcement Scenarios}
+	\rhead{\thepage}
+	\pagenumbering{Roman}
+
+	\setlength{\parindent}{11mm}
+
+	\include{components/abstract.tex}
+	\include{components/ack.tex}
+
+	\tableofcontents
+
+	{
+		\listoffigures
+		\let\clearpage\relax
+		\listoftables
+	}
+
+	\mainmatter
+
+	\titleformat{\chapter}[display]
+	{\normalfont\Large\bfseries\centering}
+	{\chaptertitlename\ \thechapter}{0pt}{\LARGE}
+
+	\titleformat{\section}
+	{\normalfont\bfseries\Large}{\thesection}{1em}{}
+
+	\titleformat{\subsection}
+	{\normalfont\bfseries\large}{\thesubsection}{1em}{}
+
+	\include{components/1-intro.tex}
+	\include{components/2-survey.tex}
+	\include{components/3-req.tex}
+	\include{components/4-algorithms.tex}
+	\include{components/5-design.tex}
+	\include{components/6-planning.tex}
+	\include{components/7-conclusion.tex}
+
+	\bibliographystyle{IEEEtranN.bst}
+	\bibliography{
+		components/refs/settings.bib,
+		components/refs/all.bib
+	}
+\end{document}

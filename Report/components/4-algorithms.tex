@@ -1,0 +1,104 @@
+\chapter{ALGORITHM ANALYSIS AND MATHEMATICAL MODELING}
+
+\section{Data Pre-processing}
+	Data preprocessing is an essential step in a real-time face recognition system. Properly processed data can significantly improve the performance and accuracy of the recognition models.
+
+	\subsection{Image Acquisition}
+		\begin{enumerate}
+			\item \textbf{Resolution Adjustment}: The raw images acquired may have varied resolutions. They should be rescaled to a consistent size (e.g., 224x224 pixels) without distorting the aspect ratio. 
+			\item \textbf{Grayscale Conversion}: While color can provide valuable information, converting images to grayscale can simplify the computation and is sometimes done when color isn't a distinguishing feature for faces.
+		\end{enumerate}
+
+	\subsection{Face Detection}
+		\begin{enumerate}
+			\item \textbf{Bounding Box}: Algorithms like RetinaFace, Single Shot MultiBox Detector (SSD), or YOLO-Face can be used to detect the face and draw a bounding box around it.
+			\item \textbf{Face Alignment}: The orientation of the face is standardized using key facial landmarks (like eyes, nose, and mouth). This ensures the face is aligned consistently regardless of its original pose.
+		\end{enumerate}
+
+	\subsection{Normalization}
+		\begin{enumerate}
+			\item \textbf{Histogram Equalization}: This is used to enhance the contrast of the image, making the features more pronounced.
+			\item \textbf{Intensity Scaling}: The pixel values are scaled to a specific range (typically between 0 and 1) to ensure consistent input to neural networks.
+		\end{enumerate}
+
+	\subsection{Noise Reduction}
+		\begin{enumerate}
+			\item \textbf{Gaussian Blur}: A gentle blur can help reduce random noise in the image.
+			\item \textbf{Median Filtering}: This can help remove salt-and-pepper noise.
+		\end{enumerate}
+
+	\subsection{Data Augmentation}
+		To enhance the robustness of the face recognition model, especially in real-time scenarios with varying lighting, poses, and expressions, augmentation techniques can be employed:
+		\begin{enumerate}
+			\item \textbf{Rotation}: Images can be rotated slightly (e.g., within $\pm$15°) to simulate head tilts.
+			\item \textbf{Brightness and Contrast Adjustments}: This simulates different lighting conditions.
+			\item \textbf{Random Cropping and Zooming}: To simulate the face being closer or farther from the camera.
+			\item \textbf{Horizontal Flipping}: Although faces are asymmetric, a gentle horizontal flip can simulate some natural variations.
+		\end{enumerate}
+
+\section{Convolutional Neural Networks}
+	CNNs play a crucial role in this project as the project is entirely based on computer vision based tasks and the Convolutional Neural Networks provides the state of the art results in this field. They can be used for the following tasks:
+
+	\begin{enumerate}
+		\item \textbf{Visual analysis of faces:} CNNs are employed to analyse and extract visual features from images of faces. This process enables the system to understand the various visual attributes of each face.
+		\item \textbf{Feature extraction:} CNNs extract high-level features from facial images, allowing the system to identify patterns, and details in the face. This feature extraction aids in the matching of potential suspects from the database with visually similar features.
+	\end{enumerate}
+
+\section{Architecture Models}
+
+	\subsection{Face Detection}
+		\begin{itemize}
+			\item \textbf{RetinaFace}: This is one of the SOTA face detectors specifically tailored for accurate face detection. It is designed to detect faces with a wide range of scales and handle hard detection scenarios such as small, blurry, and partially occluded faces. RetinaFace incorporates multi-task learning to jointly predict face bounding boxes and facial landmarks. Its anchor-free variant, RetinaFace-Free, further pushes the envelope by getting rid of pre-defined anchors, making it more flexible.
+			\item \textbf{You Only Look Once (YOLO)}: YOLO is an object detection algorithm that divides an image into a grid and predicts bounding boxes and class probabilities directly from full images in one evaluation, making it significantly faster than other methods. There are versions of YOLO tailored specifically for face detection, like YOLO-Face.
+			\item \textbf{Single Shot MultiBox Detector (SSD)}: The SSD framework processes an image only once but does so at multiple scales to detect faces of various sizes. It's a fast and accurate method, often adapted for face detection tasks.
+		\end{itemize}
+
+	\subsection{Face Tracking}
+		\begin{itemize}
+			\item \textbf{DeepSORT (Deep Simple Online and Realtime Tracking)}: An advancement over the earlier SORT (Simple Online and Realtime Tracking) algorithm, DeepSORT incorporates deep learning features to improve tracking accuracy. DeepSORT uses a combination of Kalman filtering and Hungarian assignment algorithm, enhanced with a deep association metric. This deep metric is a neural network trained to distinguish between different objects, providing better performance in scenarios with numerous occlusions and interactions.
+			\item \textbf{Siamese Networks for Visual Tracking}: Siamese networks have become particularly popular for visual object tracking, including face tracking. They work by learning a similarity function where two images with the same object have similar features. During tracking, the template image of the face is compared with candidates in the subsequent frames. Siamese trackers like SiamRPN (Region Proposal Network) and SiamMask provide efficient tracking with adaptability to scale and appearance changes.			
+			\item \textbf{ROLO (Recurrent YOLO)}: ROLO integrates the YOLO (You Only Look Once) object detection framework with recurrent LSTM (Long Short-Term Memory) units to predict an object's location in sequences, making it applicable for face tracking.
+		\end{itemize}
+	
+	\subsection{Face Recognition}
+		\begin{itemize}
+			\item \textbf{ArcFace (Additive Angular Margin Loss for Deep Face Recognition)}: ArcFace improves the margin in the angular space to better optimize face recognition models. The resultant embeddings (face representations) are more discriminative. ArcFace enhances the discriminative power of the embeddings by introducing an additive angular margin for the SoftMax loss. This approach helps in classifying faces better, even when they are from the same category or are close in appearance.
+			\item \textbf{DeepFace}: Uses a deep learning architecture, consisting of billions of parameters, to produce a 256-dimensional embedding for face recognition. It achieves its efficiency and accuracy by utilizing locally connected layers in place of the standard fully connected layers.
+			\item \textbf{VGGFace \& VGGFace2}: Based on the famous VGG16 architecture, these models are trained for face recognition and provide competitive results. VGGFace2, the successor to VGGFace, offers improvements in terms of larger datasets and more varied data and has improvements in terms of accuracy and robustness to variations in age, pose, and ethnicity.
+			\item \textbf{MobileFaceNet}: Tailored for real-time operations on edge devices, MobileFaceNet focuses on embedding efficiency. It derives inspiration from MobileNetV2 and adapts it for face embeddings by introducing separable convolutions and bottleneck structures to reduce computational load while maintaining accuracy.
+		\end{itemize}
+
+\section{Complexity Analysis}
+	\begin{itemize}
+		\item \textbf{Face Detection}: Deep learning models have a time complexity of \( O(n^2) \) due to convolution operations, where \( n \) is the size of the feature map.
+		\item \textbf{Face Tracking}: The Hungarian algorithm used in DeepSORT has a worst-case time complexity of \( O(n^3) \), but in practice, it's much faster due to the sparsity of the problem.
+		\item \textbf{Face Recognition}: The time complexity is \( O(m \times p) \) for comparing \( m \) face embeddings against \( p \) database embeddings.
+	\end{itemize}
+
+\section{Hyperparameter Tuning for Real-Time Face Recognition System}
+
+	Hyperparameter tuning is the process of finding the optimal set of parameters that governs the training process of a machine learning model. In a real-time face recognition system, efficient hyperparameter tuning can lead to faster convergence, better accuracy, and real-time performance.
+	
+	\subsection{Key Hyperparameters}
+		\begin{enumerate}
+			\item \textbf{Learning Rate ($\alpha$)}: Dictates the step size during gradient descent. A high learning rate may cause overshooting, while a low one may result in slow convergence. It's common to start with values like 0.1, 0.01, or 0.001 and refine from there.
+			
+			\item \textbf{Batch Size}: Influences the number of samples processed before the model is updated. Small batch sizes often lead to more accurate models but can be computationally intensive. Typical values might range from 32 to 512.
+			
+			\item \textbf{Epochs}: The number of complete passes over the dataset. More epochs may lead to better performance but risk overfitting.
+			
+			\item \textbf{Dropout Rate}: Used for regularization. It defines the percentage of neurons to be randomly dropped out during training. Common values are between 0.2 and 0.5.
+			
+			\item \textbf{Optimizer Parameters}: E.g., momentum in SGD (Stochastic Gradient Descent) or beta values in Adam optimizer.
+		\end{enumerate}
+	
+	\subsection{Regularization}
+		In addition to dropout, other regularization techniques such as L1 and L2 regularization can be employed to prevent overfitting. Their strength is controlled by a hyperparameter, usually referred to as lambda ($\lambda$).
+	
+	\subsection{Early Stopping}
+		This involves monitoring the validation performance during training. If the performance stops improving for a certain number of epochs (a value called 'patience'), training is halted to prevent overfitting.
+	
+	\subsection{Learning Rate Schedulers}
+		Adjusting the learning rate during training can lead to faster convergence and better results. Common strategies include step decay, exponential decay, and one-cycle learning.
+	
+	
