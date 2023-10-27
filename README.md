@@ -1,6 +1,6 @@
-# A Survey On FaceGuard: Overcoming Criminal Recognition Challenges in Law Enforcement Scenarios
+# FaceGuard: Criminal Recognition in Law Enforcement Scenarios
 
-Survey Paper on FaceGuard: Overcoming Criminal Recognition Challenges in Law Enforcement Scenarios for the completion of final year project.
+For the completion of final year project
 
 ## Recommended tooling
 
@@ -19,3 +19,11 @@ This work is licensed under a
 [cc-by]: http://creativecommons.org/licenses/by/4.0/
 [cc-by-image]: https://i.creativecommons.org/l/by/4.0/88x31.png
 [cc-by-shield]: https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg
+
+## Table of Contents
+
+|       **Folder**       | **Content**                                           |
+| :--------------------: | ----------------------------------------------------- |
+|  **[Survey](Survey)**  | Survey Paper for FaceGaurd                            |
+|     **[SRS](SRS)**     | SRS Document for FaceGaurd                            |
+| **[Report 1](Report)** | Preliminary Report for FaceGaurd compiling everything |
