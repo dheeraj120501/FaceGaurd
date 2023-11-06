@@ -22,8 +22,9 @@ This work is licensed under a
 
 ## Table of Contents
 
-|       **Folder**       | **Content**                                           |
-| :--------------------: | ----------------------------------------------------- |
-|  **[Survey](Survey)**  | Survey Paper for FaceGaurd                            |
-|     **[SRS](SRS)**     | SRS Document for FaceGaurd                            |
-| **[Report 1](Report)** | Preliminary Report for FaceGaurd compiling everything |
+|                      **Folder**                      | **Content**          |
+| :--------------------------------------------------: | -------------------- |
+|                 **[Survey](Survey)**                 | Survey Paper         |
+|                    **[SRS](SRS)**                    | SRS Document         |
+|             **[Stage 1 Report](Report)**             | Preliminary Report   |
+| **[Stage 1 Presentation](Stage%201%20Presentation)** | Stage 1 Presentation |

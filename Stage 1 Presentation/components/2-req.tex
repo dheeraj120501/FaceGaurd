@@ -1,0 +1,75 @@
+\section{Requirement Analysis}
+
+\subsection{Software \& Hardware Requirements}
+\begin{frame}{Software \& Hardware Requirements}
+	\begin{multicols}{2}
+		Software Requirements:
+		\begin{itemize}
+			\item \textbf{Libraries \& frameworks:} PyTorch, LambdaCloud, Google Colab, ONNX Runtime, Express.
+			\item \textbf{Programming languages:} Python, HTML, JS, CSS.
+			\item \textbf{Database:} Faiss, Milvus, Annoy.
+		\end{itemize}
+
+		\break
+
+		Hardware Requirements:
+		\begin{itemize}
+			\item \textbf{CPU:} Multi-core 2.5 GHz.
+			\item \textbf{GPU:} 8GB VRAM for training.
+			\item Stable internet connectivity.
+			\item CCTVs.
+		\end{itemize}
+	\end{multicols}
+	Link: \textcolor{blue}{\underline{\urllink{SRS.pdf}{System Requirements Specification}}}
+\end{frame}
+
+\subsection{Information Domain Analysis}
+\begin{frame}{Information Domain Analysis}
+	The system should:
+	\begin{enumerate}
+		\item Define how data is collected in real-time. Consider the methods used to capture facial images, including camera systems, body-worn cameras, CCTV cameras, or any other data sources. Determine the frequency and volume of data generated.
+		\item Explore where and how the collected data is stored. This can involve databases, cloud storage, or local storage systems. Consider data security and privacy measures, especially in a law enforcement context.
+		\item In the context of facial recognition, labeling data with identity information is vital. Determine how face images are annotated and labeled for training and identification purposes.
+		\item Establish procedures for ensuring data quality, including error detection and correction. Consider how data is validated and cleaned.
+	\end{enumerate}
+\end{frame}
+
+\subsection{External \& Internal Interfacing}
+\begin{frame}{External \& Internal Interfacing}
+	\begin{multicols}{2}
+		External Interfacing:
+		\begin{itemize}
+			\item Primary user interface will be web-based, accessible via standard web browsers.
+			\item The face recognition system needs to interface with external databases containing records of individuals for identification. 
+			\item Law enforcement relies on various cameras and sensors, including body-worn cameras, CCTV cameras, and thermal imaging devices.
+		\end{itemize}
+
+		\break
+
+		Internal Interfacing:
+		\begin{itemize}
+			\item The face detection module within the system needs to interface with other components. 
+			\item Face tracking module interfaces with the detection module to keep track of faces as they move within the camera's field of view.
+			\item The feature extraction and face encoding module interfaces with the tracked faces, extracting unique facial features and face embeddings.
+		\end{itemize}
+	\end{multicols}
+\end{frame}
+
+\subsection{Demand}
+\begin{frame}{Demand}
+	\begin{enumerate}
+		\item The primary demand comes from law enforcement agencies, such as police departments, border control, and security organizations.
+		\item The general public demands robust safety and security measures. They rely on law enforcement to protect their communities and respond promptly to threats.
+		\item Government bodies and regulatory agencies often play a role in defining the standards and guidelines for the use of facial recognition technology in law enforcement.
+		\item During crisis situations, such as natural disasters or public emergencies, there is a demand for rapid response and assistance. Real-time face recognition can help locate missing persons or identify individuals in need of assistance.
+	\end{enumerate}
+\end{frame}
+
+\subsection{Stakeholders}
+\begin{frame}{Stakeholders}
+	\begin{enumerate}
+		\item \textbf{Law Enforcement Agencies:} Police departments, federal agencies, and other law enforcement entities are primary stakeholders.
+		\item \textbf{Government and Regulatory Bodies:} Government agencies responsible for law enforcement oversight and regulation are stakeholders who may provide guidance, standards, or compliance requirements.
+		\item \textbf{Researchers and Developers:} Individuals or groups working on the development of face recognition algorithms, hardware, or software are stakeholders who aim to see their technologies effectively applied.
+	\end{enumerate}
+\end{frame}
